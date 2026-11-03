@@ -1,0 +1,48 @@
+{
+  "n": 1034,
+  "execution_accuracy": 0.6141199226305609,
+  "execution_accuracy_ci95": [
+    0.5841392649903289,
+    0.6441005802707931
+  ],
+  "first_attempt_accuracy": 0.6141199226305609,
+  "pass_at_k": 0.6141199226305609,
+  "by_hardness": {
+    "easy": {
+      "n": 248,
+      "accuracy": 0.8145161290322581
+    },
+    "medium": {
+      "n": 446,
+      "accuracy": 0.6547085201793722
+    },
+    "hard": {
+      "n": 174,
+      "accuracy": 0.47701149425287354
+    },
+    "extra": {
+      "n": 166,
+      "accuracy": 0.3493975903614458
+    }
+  },
+  "answered_rate": 0.0,
+  "avg_turns": 1.0,
+  "exec_errors_per_episode": 0.16634429400386846,
+  "api_errors": 0,
+  "total_tokens": 917054,
+  "total_cost_usd": 0.0,
+  "skipped_gold_errors": 0,
+  "not_run_budget": 0,
+  "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "base_url": "http://localhost:8000/v1",
+  "dataset": "spider",
+  "split": "dev",
+  "limit": null,
+  "seed": 0,
+  "max_turns": 1,
+  "sample_rows": 3,
+  "samples": 1,
+  "temperature": 0.0,
+  "elapsed_s": 28.6,
+  "records": "results/spider-dev/coder1.5b_t1.jsonl"
+}

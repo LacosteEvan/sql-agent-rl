@@ -1,0 +1,46 @@
+{
+  "n": 200,
+  "execution_accuracy": 0.735,
+  "execution_accuracy_ci95": [
+    0.67,
+    0.795
+  ],
+  "first_attempt_accuracy": 0.73,
+  "pass_at_k": 0.735,
+  "by_hardness": {
+    "easy": {
+      "n": 46,
+      "accuracy": 0.9565217391304348
+    },
+    "medium": {
+      "n": 89,
+      "accuracy": 0.6966292134831461
+    },
+    "hard": {
+      "n": 31,
+      "accuracy": 0.7741935483870968
+    },
+    "extra": {
+      "n": 34,
+      "accuracy": 0.5
+    }
+  },
+  "answered_rate": 0.94,
+  "avg_turns": 1.19,
+  "exec_errors_per_episode": 0.25,
+  "api_errors": 0,
+  "total_tokens": 225034,
+  "total_cost_usd": 0.0,
+  "model": "outputs/sft/merged",
+  "base_url": "http://localhost:8000/v1",
+  "dataset": "spider",
+  "split": "dev",
+  "max_turns": 4,
+  "sample_rows": 3,
+  "samples": 1,
+  "temperature": 0.0,
+  "seed": 0,
+  "limit": 200,
+  "records": "results/spider-dev/coder1.5b_sft_t4.jsonl",
+  "subset_of": "the full spider dev run, restricted to the questions of results/spider-dev-200/"
+}

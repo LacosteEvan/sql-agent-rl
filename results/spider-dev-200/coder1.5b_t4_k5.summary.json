@@ -1,0 +1,46 @@
+{
+  "n": 200,
+  "execution_accuracy": 0.7,
+  "execution_accuracy_ci95": [
+    0.635,
+    0.76
+  ],
+  "first_attempt_accuracy": 0.57,
+  "pass_at_k": 0.78,
+  "by_hardness": {
+    "easy": {
+      "n": 46,
+      "accuracy": 0.8043478260869565
+    },
+    "medium": {
+      "n": 89,
+      "accuracy": 0.7191011235955056
+    },
+    "hard": {
+      "n": 31,
+      "accuracy": 0.6129032258064516
+    },
+    "extra": {
+      "n": 34,
+      "accuracy": 0.5882352941176471
+    }
+  },
+  "answered_rate": 0.755,
+  "avg_turns": 3.47,
+  "exec_errors_per_episode": 0.78,
+  "api_errors": 0,
+  "total_tokens": 3860837,
+  "total_cost_usd": 0.0,
+  "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "base_url": "http://localhost:8000/v1",
+  "dataset": "spider",
+  "split": "dev",
+  "max_turns": 4,
+  "sample_rows": 3,
+  "samples": 5,
+  "temperature": 0.7,
+  "seed": 0,
+  "limit": 200,
+  "records": "results/spider-dev/coder1.5b_t4_k5.jsonl",
+  "subset_of": "the full spider dev run, restricted to the questions of results/spider-dev-200/"
+}

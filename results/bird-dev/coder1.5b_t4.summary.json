@@ -1,0 +1,44 @@
+{
+  "n": 1532,
+  "execution_accuracy": 0.24804177545691905,
+  "execution_accuracy_ci95": [
+    0.22715404699738903,
+    0.2695822454308094
+  ],
+  "first_attempt_accuracy": 0.2454308093994778,
+  "pass_at_k": 0.24804177545691905,
+  "by_hardness": {
+    "simple": {
+      "n": 925,
+      "accuracy": 0.31675675675675674
+    },
+    "moderate": {
+      "n": 463,
+      "accuracy": 0.14254859611231102
+    },
+    "challenging": {
+      "n": 144,
+      "accuracy": 0.14583333333333334
+    }
+  },
+  "answered_rate": 0.6442558746736292,
+  "avg_turns": 3.983681462140992,
+  "exec_errors_per_episode": 1.4817232375979112,
+  "api_errors": 0,
+  "total_tokens": 13778101,
+  "total_cost_usd": 0.0,
+  "skipped_gold_errors": 2,
+  "not_run_budget": 0,
+  "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "base_url": "http://localhost:8000/v1",
+  "dataset": "bird",
+  "split": "dev",
+  "limit": null,
+  "seed": 0,
+  "max_turns": 4,
+  "sample_rows": 3,
+  "samples": 1,
+  "temperature": 0.0,
+  "elapsed_s": 351.2,
+  "records": "results/bird-dev/coder1.5b_t4.jsonl"
+}

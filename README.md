@@ -10,22 +10,27 @@ Every claim below is measured, with confidence intervals, and reproducible from 
 
 ## Results
 
-Baselines on 200 random dev questions per benchmark (`--seed 0`), through OpenRouter. Raw episodes and summaries are committed in [`results/`](results).
+All models are scored on the same 200 random dev questions per benchmark (`--seed 0`). API models run through OpenRouter; Qwen2.5-Coder-1.5B runs on a Colab GPU with vLLM, on the full dev sets, and is shown here on the same 200 questions (full-dev numbers below the tables). Raw episodes and summaries are committed in [`results/`](results).
 
 ### Spider
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/results-dark.png">
-  <img alt="Execution accuracy by Spider difficulty for Qwen2.5-7B with 1 and 4 turns, and Claude Sonnet 5.5" src="docs/results-light.png">
+  <img alt="Execution accuracy by Spider difficulty for Qwen2.5-Coder-1.5B with 1 and 4 turns and after SFT, Qwen2.5-7B with 4 turns, and Claude Sonnet 5.5" src="docs/results-light.png">
 </picture>
 
 | Model | Max turns | Execution accuracy (95% CI) | First attempt | Easy | Medium | Hard | Extra | Cost |
 |---|---|---|---|---|---|---|---|---|
+| Qwen2.5-Coder-1.5B, 1 turn | 1 | **67.0%** (60.0%–73.0%) | 67.0% | 89% | 65% | 58% | 50% | $0 (Colab) |
+| Qwen2.5-Coder-1.5B, 4 turns | 4 | **57.0%** (50.0%–63.5%) | 67.0% | 70% | 57% | 45% | 50% | $0 (Colab) |
+| Qwen2.5-Coder-1.5B, 4 turns, majority of 5 | 4 | **70.0%** (63.5%–76.0%) | 57.0% | 80% | 72% | 61% | 59% | $0 (Colab) |
+| Qwen2.5-Coder-1.5B + SFT | 4 | **73.5%** (67.0%–79.5%) | 73.0% | 96% | 70% | 77% | 50% | $0 (Colab) |
+| Qwen2.5-Coder-1.5B + SFT + GRPO | 4 | *in progress* | | | | | | $0 (Colab) |
 | Qwen2.5-7B, 1 turn | 1 | **72.5%** (66.5%–78.5%) | 72.5% | 93% | 75% | 58% | 50% | $0.02 |
 | Qwen2.5-7B, 4 turns | 4 | **76.5%** (70.5%–82.5%) | 72.0% | 91% | 78% | 71% | 59% | $0.04 |
 | Claude Sonnet 5.5, 4 turns | 4 | **86.0%** (81.0%–90.5%) | 85.0% | 89% | 91% | 84% | 71% | $0.86 |
-| Qwen2.5-Coder-1.5B + SFT | 4 | *in progress* | | | | | | $0 (Colab) |
-| Qwen2.5-Coder-1.5B + SFT + GRPO | 4 | *in progress* | | | | | | $0 (Colab) |
+
+On the full Spider dev set (1,034 questions), Qwen2.5-Coder-1.5B scores 61.4% with 1 turn, 51.8% with 4 turns, 61.3% with a majority of 5, and **73.5% after SFT** ([`results/spider-dev/`](results/spider-dev)).
 
 ### BIRD
 
@@ -33,18 +38,24 @@ Larger, messier real-world databases, never seen in training; each question come
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/results-bird-dark.png">
-  <img alt="Execution accuracy by BIRD difficulty for Qwen2.5-7B with 1 and 4 turns, and Claude Sonnet 5.5" src="docs/results-bird-light.png">
+  <img alt="Execution accuracy by BIRD difficulty for Qwen2.5-Coder-1.5B with 4 turns, Qwen2.5-7B with 1 and 4 turns, and Claude Sonnet 5.5" src="docs/results-bird-light.png">
 </picture>
 
 | Model | Max turns | Execution accuracy (95% CI) | First attempt | Simple | Moderate | Challenging | Cost |
 |---|---|---|---|---|---|---|---|
+| Qwen2.5-Coder-1.5B, 4 turns | 4 | **18.1%** (13.1%–23.6%) | 20.1% | 20% | 14% | 19% | $0 (Colab) |
+| Qwen2.5-Coder-1.5B + SFT + GRPO | 4 | *in progress* | | | | | $0 (Colab) |
 | Qwen2.5-7B, 1 turn | 1 | **41.7%** (34.7%–48.7%) | 41.7% | 50% | 31% | 29% | $0.04 |
 | Qwen2.5-7B, 4 turns | 4 | **41.7%** (35.2%–48.2%) | 38.7% | 50% | 29% | 38% | $0.11 |
 | Claude Sonnet 5.5, 4 turns | 4 | **69.8%** (63.8%–76.4%) | 61.3% | 75% | 60% | 71% | $2.21 |
-| Qwen2.5-Coder-1.5B + SFT + GRPO | 4 | *in progress* | | | | | $0 (Colab) |
+
+On the full BIRD dev set (1,532 questions), Qwen2.5-Coder-1.5B with 4 turns scores 24.8% ([`results/bird-dev/`](results/bird-dev)).
 
 ### What the numbers say
 
+- **SFT on free data takes the 1.5B model to the level of a model five times its size.** On the full Spider dev set it goes from 61.4% (its best untrained setting, 1 turn) to 73.5%: **+12.1 points** (paired bootstrap: 95% CI +9.3 to +15.0). On the 200 shared questions it is within noise of Qwen2.5-7B with 4 turns (−3.0 points, CI −10.0 to +4.0), at a fifth of the parameters and no API cost.
+- **The untrained 1.5B model is hurt by the self-correction loop: −9.6 points** (CI −12.1 to −7.0) when allowed 4 turns instead of 1. It almost never stops early (1,028 of 1,034 episodes use all 4 turns): 141 correct first drafts are explored away into wrong answers, against 38 wrong drafts fixed, and 133 episodes end without an answer. Sampling 5 episodes and voting on the result recovers the loss (+9.5 points), so the right answer is often within reach; the model just does not know when to stop.
+- **SFT teaches it to answer, not yet to correct itself.** After SFT, 958 of 1,034 episodes end on the first turn and no correct first draft is lost, but of the 76 episodes that hit a SQL error only 4 recover. Learning to use the feedback is the job left to GRPO.
 - **On Spider, the self-correction loop pays off: +4.0 points** for Qwen2.5-7B (paired bootstrap: 95% CI +0.0 to +8.0, P(no gain) = 0.04), concentrated on hard questions (58% → 71%).
 - **On BIRD, the same 7B model gets nothing from the loop: +0.0 points** (95% CI −4.5 to +4.5). It hits a SQL error in 54 of 199 episodes and recovers in only 13; 19 episodes never produce an executable answer, and 5 correct first drafts get "fixed" into wrong ones. Claude, given the same loop, goes from 61.3% on its first attempt to 69.8%, mostly by exploring the data before answering. **Using feedback well is a skill the small model lacks — exactly what RL on an execution reward should teach.**
 - **The gap to a frontier model triples on BIRD**: 9.5 points on Spider (CI +3.0 to +16.0), 28.1 on BIRD (CI +21.1 to +35.7). Spider is close to saturation; BIRD is where training has room to show.
@@ -170,7 +181,9 @@ them, judges them with calibrated LLM judges and detects regressions between age
 - [x] Agent, sandbox, verifiable reward, evaluation with CIs
 - [x] Free SFT data, prompt filtering, GRPO and SFT scripts, Colab notebooks
 - [x] Baselines on Spider and BIRD: Qwen2.5-7B (1 and 4 turns) and a frontier ceiling
-- [ ] SFT then GRPO on Qwen2.5-Coder-1.5B, tracked in Weights & Biases
+- [x] Qwen2.5-Coder-1.5B evaluated on Colab with vLLM, 1 and 4 turns, majority of 5, Spider and BIRD dev
+- [x] SFT on Qwen2.5-Coder-1.5B: +12.1 points on Spider dev
+- [ ] GRPO from the SFT model, tracked in Weights & Biases
 - [ ] Final test-set evaluation, trained model published on the Hugging Face Hub
 - [ ] Trained model evaluated on BIRD dev (out-of-domain generalization)
 - [ ] Trajectory-level GRPO with multi-turn rollouts

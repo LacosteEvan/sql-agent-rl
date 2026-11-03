@@ -22,16 +22,30 @@ check-gold:       ## the reward must accept every gold query
 sft-data:         ## free SFT/GRPO data from the gold queries
 	$(PY) -m sql_agent build-sft --split train --out data/sft.jsonl
 
-report:           ## README table + chart from the committed results
+SPIDER := results/spider-dev-200
+BIRD := results/bird-dev-200
+
+report:           ## README table + chart from the committed results (the chart holds 6 runs at most)
 	$(PY) -m sql_agent report \
-		"Qwen2.5-7B, 1 turn=results/spider-dev-200/qwen7b_t1.summary.json" \
-		"Qwen2.5-7B, 4 turns=results/spider-dev-200/qwen7b_t4.summary.json" \
-		"Claude Sonnet 5.5, 4 turns=results/spider-dev-200/sonnet55_t4.summary.json" \
-		--chart docs/results
+		"Qwen2.5-Coder-1.5B, 1 turn=$(SPIDER)/coder1.5b_t1.summary.json" \
+		"Qwen2.5-Coder-1.5B, 4 turns=$(SPIDER)/coder1.5b_t4.summary.json" \
+		"Qwen2.5-Coder-1.5B, 4 turns, majority of 5=$(SPIDER)/coder1.5b_t4_k5.summary.json" \
+		"Qwen2.5-Coder-1.5B + SFT=$(SPIDER)/coder1.5b_sft_t4.summary.json" \
+		"Qwen2.5-7B, 1 turn=$(SPIDER)/qwen7b_t1.summary.json" \
+		"Qwen2.5-7B, 4 turns=$(SPIDER)/qwen7b_t4.summary.json" \
+		"Claude Sonnet 5.5, 4 turns=$(SPIDER)/sonnet55_t4.summary.json"
+	$(PY) -m sql_agent report \
+		"Qwen2.5-Coder-1.5B, 1 turn=$(SPIDER)/coder1.5b_t1.summary.json" \
+		"Qwen2.5-Coder-1.5B, 4 turns=$(SPIDER)/coder1.5b_t4.summary.json" \
+		"Qwen2.5-Coder-1.5B + SFT=$(SPIDER)/coder1.5b_sft_t4.summary.json" \
+		"Qwen2.5-7B, 4 turns=$(SPIDER)/qwen7b_t4.summary.json" \
+		"Claude Sonnet 5.5, 4 turns=$(SPIDER)/sonnet55_t4.summary.json" \
+		--chart docs/results > /dev/null
 
 report-bird:      ## same, on BIRD
 	$(PY) -m sql_agent report \
-		"Qwen2.5-7B, 1 turn=results/bird-dev-200/qwen7b_t1.summary.json" \
-		"Qwen2.5-7B, 4 turns=results/bird-dev-200/qwen7b_t4.summary.json" \
-		"Claude Sonnet 5.5, 4 turns=results/bird-dev-200/sonnet55_t4.summary.json" \
+		"Qwen2.5-Coder-1.5B, 4 turns=$(BIRD)/coder1.5b_t4.summary.json" \
+		"Qwen2.5-7B, 1 turn=$(BIRD)/qwen7b_t1.summary.json" \
+		"Qwen2.5-7B, 4 turns=$(BIRD)/qwen7b_t4.summary.json" \
+		"Claude Sonnet 5.5, 4 turns=$(BIRD)/sonnet55_t4.summary.json" \
 		--chart docs/results-bird
