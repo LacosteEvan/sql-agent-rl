@@ -1,0 +1,48 @@
+{
+  "n": 200,
+  "execution_accuracy": 0.86,
+  "execution_accuracy_ci95": [
+    0.81,
+    0.905
+  ],
+  "first_attempt_accuracy": 0.85,
+  "pass_at_k": 0.86,
+  "by_hardness": {
+    "easy": {
+      "n": 46,
+      "accuracy": 0.8913043478260869
+    },
+    "medium": {
+      "n": 89,
+      "accuracy": 0.9101123595505618
+    },
+    "hard": {
+      "n": 31,
+      "accuracy": 0.8387096774193549
+    },
+    "extra": {
+      "n": 34,
+      "accuracy": 0.7058823529411765
+    }
+  },
+  "answered_rate": 1.0,
+  "avg_turns": 1.13,
+  "exec_errors_per_episode": 0.0,
+  "api_errors": 0,
+  "total_tokens": 323724,
+  "total_cost_usd": 0.8577,
+  "skipped_gold_errors": 0,
+  "not_run_budget": 0,
+  "model": "anthropic/claude-sonnet-5.5",
+  "base_url": "https://openrouter.ai/api/v1",
+  "split": "dev",
+  "max_turns": 4,
+  "sample_rows": 3,
+  "samples": 1,
+  "temperature": 0.0,
+  "elapsed_s": 31.0,
+  "records": "results/spider-dev-200/sonnet55_t4.jsonl",
+  "limit": 200,
+  "seed": 0,
+  "dataset": "spider"
+}

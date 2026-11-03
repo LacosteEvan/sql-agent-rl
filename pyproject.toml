@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sql-agent-rl"
+version = "0.1.0"
+description = "Self-correcting text-to-SQL agent, fine-tuned with SFT then GRPO on a verifiable execution reward."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Evan Lacoste" }]
+requires-python = ">=3.10"
+dependencies = [
+  "openai>=1.40",
+  "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.8"]
+dev = ["pytest>=8", "ruff>=0.6", "matplotlib>=3.8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+extend-exclude = ["data"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["sql_agent", "_common"]

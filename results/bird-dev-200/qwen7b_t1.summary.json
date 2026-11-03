@@ -1,0 +1,43 @@
+{
+  "n": 199,
+  "execution_accuracy": 0.41708542713567837,
+  "execution_accuracy_ci95": [
+    0.34673366834170855,
+    0.48743718592964824
+  ],
+  "first_attempt_accuracy": 0.41708542713567837,
+  "pass_at_k": 0.41708542713567837,
+  "by_hardness": {
+    "simple": {
+      "n": 113,
+      "accuracy": 0.504424778761062
+    },
+    "moderate": {
+      "n": 65,
+      "accuracy": 0.3076923076923077
+    },
+    "challenging": {
+      "n": 21,
+      "accuracy": 0.2857142857142857
+    }
+  },
+  "answered_rate": 0.11557788944723618,
+  "avg_turns": 1.0,
+  "exec_errors_per_episode": 0.18090452261306533,
+  "api_errors": 0,
+  "total_tokens": 428887,
+  "total_cost_usd": 0.0441,
+  "skipped_gold_errors": 1,
+  "not_run_budget": 0,
+  "model": "qwen/qwen-2.5-7b-instruct",
+  "base_url": "https://openrouter.ai/api/v1",
+  "split": "dev",
+  "limit": 200,
+  "seed": 0,
+  "max_turns": 1,
+  "sample_rows": 3,
+  "samples": 1,
+  "temperature": 0.0,
+  "elapsed_s": 53.4,
+  "records": "results/bird-dev-200/qwen7b_t1.jsonl"
+}

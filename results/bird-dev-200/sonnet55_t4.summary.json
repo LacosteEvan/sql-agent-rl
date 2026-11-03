@@ -1,0 +1,44 @@
+{
+  "n": 199,
+  "execution_accuracy": 0.6984924623115578,
+  "execution_accuracy_ci95": [
+    0.6381909547738693,
+    0.7638190954773869
+  ],
+  "first_attempt_accuracy": 0.6130653266331658,
+  "pass_at_k": 0.6984924623115578,
+  "by_hardness": {
+    "simple": {
+      "n": 113,
+      "accuracy": 0.7522123893805309
+    },
+    "moderate": {
+      "n": 65,
+      "accuracy": 0.6
+    },
+    "challenging": {
+      "n": 21,
+      "accuracy": 0.7142857142857143
+    }
+  },
+  "answered_rate": 1.0,
+  "avg_turns": 1.3366834170854272,
+  "exec_errors_per_episode": 0.01507537688442211,
+  "api_errors": 0,
+  "total_tokens": 888630,
+  "total_cost_usd": 2.2076,
+  "skipped_gold_errors": 1,
+  "not_run_budget": 0,
+  "model": "anthropic/claude-sonnet-5.5",
+  "base_url": "https://openrouter.ai/api/v1",
+  "dataset": "bird",
+  "split": "dev",
+  "limit": 200,
+  "seed": 0,
+  "max_turns": 4,
+  "sample_rows": 3,
+  "samples": 1,
+  "temperature": 0.0,
+  "elapsed_s": 691.0,
+  "records": "results/bird-dev-200/sonnet55_t4.jsonl"
+}

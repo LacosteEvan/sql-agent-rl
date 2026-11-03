@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.egg-info/
+.venv/
+.pytest_cache/
+data/spider_data/
+data/bird/
+data/__MACOSX/
+runs/
+data/*.jsonl
+outputs/
+wandb/

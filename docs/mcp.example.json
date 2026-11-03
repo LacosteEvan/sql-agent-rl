@@ -1,0 +1,32 @@
+{
+  "mcpServers": {
+    "huggingface": {
+      "type": "http",
+      "url": "https://huggingface.co/mcp",
+      "headers": { "Authorization": "Bearer ${HF_TOKEN}" }
+    },
+    "wandb": {
+      "type": "http",
+      "url": "https://mcp.withwandb.com/mcp",
+      "headers": { "Authorization": "Bearer ${WANDB_API_KEY}" }
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": { "Authorization": "Bearer ${GITHUB_PAT}" }
+    },
+    "bird-db": {
+      "command": "uvx",
+      "args": ["mcp-server-sqlite", "--db-path", "${BIRD_DB:-data/bird/dev_20240627/dev_databases/california_schools/california_schools.sqlite}"]
+    },
+    "observatory": {
+      "command": "observatory",
+      "args": ["mcp"],
+      "env": { "OBSERVATORY_DB_URL": "${OBSERVATORY_DB_URL}" }
+    },
+    "context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp"
+    }
+  }
+}

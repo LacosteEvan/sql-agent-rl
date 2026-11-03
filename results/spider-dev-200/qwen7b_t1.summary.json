@@ -1,0 +1,48 @@
+{
+  "n": 200,
+  "execution_accuracy": 0.725,
+  "execution_accuracy_ci95": [
+    0.665,
+    0.785
+  ],
+  "first_attempt_accuracy": 0.725,
+  "pass_at_k": 0.725,
+  "by_hardness": {
+    "easy": {
+      "n": 46,
+      "accuracy": 0.9347826086956522
+    },
+    "medium": {
+      "n": 89,
+      "accuracy": 0.7528089887640449
+    },
+    "hard": {
+      "n": 31,
+      "accuracy": 0.5806451612903226
+    },
+    "extra": {
+      "n": 34,
+      "accuracy": 0.5
+    }
+  },
+  "answered_rate": 0.085,
+  "avg_turns": 1.0,
+  "exec_errors_per_episode": 0.07,
+  "api_errors": 0,
+  "total_tokens": 181317,
+  "total_cost_usd": 0.0188,
+  "skipped_gold_errors": 0,
+  "not_run_budget": 0,
+  "model": "qwen/qwen-2.5-7b-instruct",
+  "base_url": "https://openrouter.ai/api/v1",
+  "split": "dev",
+  "max_turns": 1,
+  "sample_rows": 3,
+  "samples": 1,
+  "temperature": 0.0,
+  "elapsed_s": 12.6,
+  "records": "results/spider-dev-200/qwen7b_t1.jsonl",
+  "limit": 200,
+  "seed": 0,
+  "dataset": "spider"
+}

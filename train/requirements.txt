@@ -1,0 +1,4 @@
+# Versions checked to work together (TRL 1.16 supports vLLM 0.22 to 0.31).
+trl[peft,vllm]==1.16.0
+datasets>=4.7
+wandb
