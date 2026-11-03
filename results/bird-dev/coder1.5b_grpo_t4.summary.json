@@ -1,0 +1,44 @@
+{
+  "n": 1530,
+  "execution_accuracy": 0.31699346405228757,
+  "execution_accuracy_ci95": [
+    0.2934640522875817,
+    0.3411764705882353
+  ],
+  "first_attempt_accuracy": 0.3058823529411765,
+  "pass_at_k": 0.31699346405228757,
+  "by_hardness": {
+    "simple": {
+      "n": 923,
+      "accuracy": 0.41386782231852653
+    },
+    "moderate": {
+      "n": 463,
+      "accuracy": 0.17494600431965443
+    },
+    "challenging": {
+      "n": 144,
+      "accuracy": 0.1527777777777778
+    }
+  },
+  "answered_rate": 0.696078431372549,
+  "avg_turns": 1.9640522875816993,
+  "exec_errors_per_episode": 1.2679738562091503,
+  "api_errors": 0,
+  "total_tokens": 6613548,
+  "total_cost_usd": 0.0,
+  "skipped_gold_errors": 4,
+  "not_run_budget": 0,
+  "model": "outputs/grpo/merged",
+  "base_url": "http://localhost:8000/v1",
+  "dataset": "bird",
+  "split": "dev",
+  "limit": null,
+  "seed": 0,
+  "max_turns": 4,
+  "sample_rows": 3,
+  "samples": 1,
+  "temperature": 0.0,
+  "elapsed_s": 83.6,
+  "records": "results/bird-dev/coder1.5b_grpo_t4.jsonl"
+}

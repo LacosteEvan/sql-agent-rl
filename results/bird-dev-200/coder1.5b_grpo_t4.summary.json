@@ -1,0 +1,42 @@
+{
+  "n": 199,
+  "execution_accuracy": 0.24623115577889448,
+  "execution_accuracy_ci95": [
+    0.18592964824120603,
+    0.3065326633165829
+  ],
+  "first_attempt_accuracy": 0.23618090452261306,
+  "pass_at_k": 0.24623115577889448,
+  "by_hardness": {
+    "simple": {
+      "n": 113,
+      "accuracy": 0.30973451327433627
+    },
+    "moderate": {
+      "n": 65,
+      "accuracy": 0.15384615384615385
+    },
+    "challenging": {
+      "n": 21,
+      "accuracy": 0.19047619047619047
+    }
+  },
+  "answered_rate": 0.628140703517588,
+  "avg_turns": 2.1758793969849246,
+  "exec_errors_per_episode": 1.5477386934673367,
+  "api_errors": 0,
+  "total_tokens": 984196,
+  "total_cost_usd": 0.0,
+  "model": "outputs/grpo/merged",
+  "base_url": "http://localhost:8000/v1",
+  "dataset": "bird",
+  "split": "dev",
+  "max_turns": 4,
+  "sample_rows": 3,
+  "samples": 1,
+  "temperature": 0.0,
+  "seed": 0,
+  "limit": 199,
+  "records": "results/bird-dev/coder1.5b_grpo_t4.jsonl",
+  "subset_of": "the full bird dev run, restricted to the questions of results/bird-dev-200/"
+}

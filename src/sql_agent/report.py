@@ -86,3 +86,40 @@ def chart(runs: list[tuple[str, dict]], out_stem: Path) -> list[Path]:
         plt.close(fig)
         paths.append(path)
     return paths
+
+
+def reward_curve(steps: list[int], rewards: list[float], out_stem: Path, window: int = 10) -> list[Path]:
+    """GRPO training reward (each point: the mean over `logging_steps` steps) and its rolling mean."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    smooth = [sum(rewards[max(0, i - window + 1):i + 1]) / len(rewards[max(0, i - window + 1):i + 1])
+              for i in range(len(rewards))]
+    paths = []
+    for mode, t in THEMES.items():
+        fig, ax = plt.subplots(figsize=(9, 3.4), dpi=200)
+        fig.patch.set_facecolor(t["surface"])
+        ax.set_facecolor(t["surface"])
+        ax.plot(steps, rewards, color=t["muted"], alpha=0.45, linewidth=1, zorder=2)
+        ax.plot(steps, smooth, color=t["series"][0], linewidth=2, zorder=3)
+        ax.annotate("logged reward", (steps[-1], rewards[-1]), xytext=(6, 0), textcoords="offset points",
+                    va="center", fontsize=8, color=t["muted"])
+        ax.annotate(f"rolling mean ({window} points)", (steps[-1], smooth[-1]), xytext=(6, 0),
+                    textcoords="offset points", va="center", fontsize=8, color=t["ink"])
+        ax.set_xlim(0, steps[-1])
+        ax.set_xlabel("GRPO step", color=t["muted"], fontsize=9)
+        ax.set_ylabel("Mean reward (max 1.1)", color=t["muted"], fontsize=9)
+        ax.tick_params(colors=t["muted"], labelsize=8, length=0)
+        ax.grid(axis="y", color=t["grid"], linewidth=0.8, zorder=0)
+        for side in ("top", "right", "left"):
+            ax.spines[side].set_visible(False)
+        ax.spines["bottom"].set_color(t["axis"])
+        fig.tight_layout()
+        path = out_stem.with_name(f"{out_stem.name}-{mode}.png")
+        path.parent.mkdir(parents=True, exist_ok=True)
+        fig.savefig(path, facecolor=t["surface"])
+        plt.close(fig)
+        paths.append(path)
+    return paths

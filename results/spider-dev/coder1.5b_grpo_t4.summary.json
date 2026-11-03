@@ -1,0 +1,48 @@
+{
+  "n": 1034,
+  "execution_accuracy": 0.7446808510638298,
+  "execution_accuracy_ci95": [
+    0.7176015473887815,
+    0.7727272727272727
+  ],
+  "first_attempt_accuracy": 0.741779497098646,
+  "pass_at_k": 0.7446808510638298,
+  "by_hardness": {
+    "easy": {
+      "n": 248,
+      "accuracy": 0.8669354838709677
+    },
+    "medium": {
+      "n": 446,
+      "accuracy": 0.7959641255605381
+    },
+    "hard": {
+      "n": 174,
+      "accuracy": 0.6436781609195402
+    },
+    "extra": {
+      "n": 166,
+      "accuracy": 0.5301204819277109
+    }
+  },
+  "answered_rate": 0.9410058027079303,
+  "avg_turns": 1.18568665377176,
+  "exec_errors_per_episode": 0.24468085106382978,
+  "api_errors": 0,
+  "total_tokens": 1124649,
+  "total_cost_usd": 0.0,
+  "skipped_gold_errors": 0,
+  "not_run_budget": 0,
+  "model": "outputs/grpo/merged",
+  "base_url": "http://localhost:8000/v1",
+  "dataset": "spider",
+  "split": "dev",
+  "limit": null,
+  "seed": 0,
+  "max_turns": 4,
+  "sample_rows": 3,
+  "samples": 1,
+  "temperature": 0.0,
+  "elapsed_s": 16.4,
+  "records": "results/spider-dev/coder1.5b_grpo_t4.jsonl"
+}

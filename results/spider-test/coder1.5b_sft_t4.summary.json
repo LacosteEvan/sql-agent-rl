@@ -1,0 +1,48 @@
+{
+  "n": 2147,
+  "execution_accuracy": 0.7517466231951561,
+  "execution_accuracy_ci95": [
+    0.7326502095947834,
+    0.7694457382394038
+  ],
+  "first_attempt_accuracy": 0.7456916627852818,
+  "pass_at_k": 0.7517466231951561,
+  "by_hardness": {
+    "easy": {
+      "n": 470,
+      "accuracy": 0.9106382978723404
+    },
+    "medium": {
+      "n": 857,
+      "accuracy": 0.7876312718786465
+    },
+    "hard": {
+      "n": 463,
+      "accuracy": 0.6630669546436285
+    },
+    "extra": {
+      "n": 357,
+      "accuracy": 0.5714285714285714
+    }
+  },
+  "answered_rate": 0.9250116441546343,
+  "avg_turns": 1.2361434559850955,
+  "exec_errors_per_episode": 0.3111318118304611,
+  "api_errors": 0,
+  "total_tokens": 2382316,
+  "total_cost_usd": 0.0,
+  "skipped_gold_errors": 0,
+  "not_run_budget": 0,
+  "model": "outputs/sft/merged",
+  "base_url": "http://localhost:8000/v1",
+  "dataset": "spider",
+  "split": "test",
+  "limit": null,
+  "seed": 0,
+  "max_turns": 4,
+  "sample_rows": 3,
+  "samples": 1,
+  "temperature": 0.0,
+  "elapsed_s": 35.7,
+  "records": "results/spider-test/coder1.5b_sft_t4.jsonl"
+}
